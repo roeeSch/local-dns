@@ -1,0 +1,30 @@
+version: "3.9"
+
+services:
+  local-dns:
+    image: local-dns          # pre-built image
+    container_name: local-dns
+    restart: unless-stopped
+    network_mode: "host"      # required to bind to the LAN interface
+    volumes:
+      - ./dnsmasq/log:/var/log
+    tty: true
+
+# version: "3.9"
+# services:
+#   dnsmasq:
+#     image: debian:bookworm
+#     container_name: local-dns
+#     restart: unless-stopped
+#     network_mode: "host"        # Bind directly to LAN interface
+#     volumes:
+#       - ./dnsmasq/dnsmasq.conf:/etc/dnsmasq.conf:ro
+#       - ./dnsmasq:/etc/dnsmasq.d
+#       - ./dnsmasq/log:/var/log
+#     command: >
+#       bash -c "
+#         apt-get update && apt-get install -y dnsmasq arp-scan &&
+#         dnsmasq -k -C /etc/dnsmasq.conf &
+#         bash /etc/dnsmasq.d/update_nvr_ip.sh"
+
+#     tty: true
