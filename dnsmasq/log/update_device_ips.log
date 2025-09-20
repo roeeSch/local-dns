@@ -1,0 +1,140 @@
+2025-09-20 08:09:44: Starting multi-device IP auto-update loop
+2025-09-20 08:09:46: Updated 71 (db:bd:12:08:nvr.home:NVR Camera System) -> 10.0.0.5
+10.0.0.7
+10.0.0.13
+10.0.0.12
+10.0.0.14
+10.0.0.29
+10.0.0.41
+10.0.0.43
+60
+Ending (was: 'not found')
+2025-09-20 08:09:46: Reloaded dnsmasq (PID: 7)
+2025-09-20 08:10:48: Updated 71 (db:bd:12:08:nvr.home:NVR Camera System) -> 10.0.0.5
+10.0.0.7
+10.0.0.12
+10.0.0.13
+10.0.0.14
+10.0.0.29
+10.0.0.41
+10.0.0.39
+10.0.0.43
+91
+Ending (was: 10.0.0.5)
+2025-09-20 08:10:48: Reloaded dnsmasq (PID: 7)
+2025-09-20 08:10:48: Status: 1 devices configured, 1 updated this cycle
+2025-09-20 08:11:50: Updated 71 (db:bd:12:08:nvr.home:NVR Camera System) -> 10.0.0.5
+10.0.0.7
+10.0.0.13
+10.0.0.14
+10.0.0.12
+10.0.0.29
+10.0.0.41
+10.0.0.39
+10.0.0.43
+99
+Ending (was: 10.0.0.5)
+2025-09-20 08:11:50: Reloaded dnsmasq (PID: 7)
+2025-09-20 08:12:52: Updated 71 (db:bd:12:08:nvr.home:NVR Camera System) -> 10.0.0.5
+10.0.0.7
+10.0.0.12
+10.0.0.13
+10.0.0.14
+10.0.0.29
+10.0.0.41
+10.0.0.39
+10.0.0.39
+10.0.0.43
+74
+Ending (was: 10.0.0.5)
+2025-09-20 08:12:52: Reloaded dnsmasq (PID: 7)
+2025-09-20 08:13:54: Updated 71 (db:bd:12:08:nvr.home:NVR Camera System) -> 10.0.0.5
+10.0.0.7
+10.0.0.12
+10.0.0.13
+10.0.0.14
+10.0.0.29
+10.0.0.41
+10.0.0.43
+63
+Ending (was: 10.0.0.5)
+2025-09-20 08:13:54: Reloaded dnsmasq (PID: 7)
+2025-09-20 08:14:56: Updated 71 (db:bd:12:08:nvr.home:NVR Camera System) -> 10.0.0.5
+10.0.0.7
+10.0.0.12
+10.0.0.13
+10.0.0.14
+10.0.0.29
+10.0.0.41
+10.0.0.39
+10.0.0.43
+86
+Ending (was: 10.0.0.5)
+2025-09-20 08:14:56: Reloaded dnsmasq (PID: 7)
+2025-09-20 08:15:58: Updated 71 (db:bd:12:08:nvr.local:NVR Camera System) -> 10.0.0.5
+10.0.0.7
+10.0.0.13
+10.0.0.12
+10.0.0.14
+10.0.0.29
+10.0.0.41
+10.0.0.43
+10.0.0.39
+36
+Ending (was: 10.0.0.5)
+2025-09-20 08:15:58: Reloaded dnsmasq (PID: 7)
+2025-09-20 08:17:00: Updated 71 (db:bd:12:08:nvr.local:NVR Camera System) -> 10.0.0.5
+10.0.0.7
+10.0.0.12
+10.0.0.13
+10.0.0.14
+10.0.0.29
+10.0.0.41
+10.0.0.43
+76
+Ending (was: 10.0.0.5)
+2025-09-20 08:17:00: Reloaded dnsmasq (PID: 7)
+2025-09-20 08:18:02: Updated 71 (db:bd:12:08:nvr.local:NVR Camera System) -> 10.0.0.5
+10.0.0.7
+10.0.0.12
+10.0.0.13
+10.0.0.14
+10.0.0.29
+10.0.0.41
+10.0.0.43
+43
+Ending (was: 10.0.0.5)
+2025-09-20 08:18:02: Reloaded dnsmasq (PID: 7)
+2025-09-20 08:19:03: Updated 71 (db:bd:12:08:nvr.local:NVR Camera System) -> 10.0.0.5
+10.0.0.7
+10.0.0.12
+10.0.0.13
+10.0.0.14
+10.0.0.29
+10.0.0.41
+10.0.0.39
+10.0.0.43
+63
+Ending (was: 10.0.0.5)
+2025-09-20 08:19:03: Reloaded dnsmasq (PID: 7)
+2025-09-20 08:19:29: Starting multi-device IP auto-update loop
+2025-09-20 08:19:35: Device not found: nvr.local (NVR Camera System) - MAC: ec:71:db:bd:12:08
+2025-09-20 08:20:41: Device not found: nvr.local (NVR Camera System) - MAC: ec:71:db:bd:12:08
+2025-09-20 08:20:41: Status: 1 devices configured, 0 updated this cycle
+2025-09-20 08:21:47: Device not found: nvr.local (NVR Camera System) - MAC: ec:71:db:bd:12:08
+2025-09-20 08:22:54: Device not found: nvr.local (NVR Camera System) - MAC: ec:71:db:bd:12:08
+2025-09-20 08:24:00: Device not found: nvr.local (NVR Camera System) - MAC: ec:71:db:bd:12:08
+2025-09-20 08:25:06: Device not found: nvr.local (NVR Camera System) - MAC: ec:71:db:bd:12:08
+2025-09-20 08:26:12: Device not found: nvr.local (NVR Camera System) - MAC: ec:71:db:bd:12:08
+2025-09-20 08:27:18: Device not found: nvr.local (NVR Camera System) - MAC: ec:71:db:bd:12:08
+2025-09-20 08:28:24: Device not found: nvr.local (NVR Camera System) - MAC: ec:71:db:bd:12:08
+2025-09-20 08:29:30: Device not found: nvr.local (NVR Camera System) - MAC: ec:71:db:bd:12:08
+2025-09-20 08:30:36: Device not found: nvr.local (NVR Camera System) - MAC: ec:71:db:bd:12:08
+2025-09-20 08:30:36: Status: 1 devices configured, 0 updated this cycle
+2025-09-20 08:31:42: Device not found: nvr.local (NVR Camera System) - MAC: ec:71:db:bd:12:08
+2025-09-20 08:32:48: Device not found: nvr.local (NVR Camera System) - MAC: ec:71:db:bd:12:08
+2025-09-20 08:32:54: Device not found: homeassistant.local (Home Assistant) - MAC: 2c:cf:67:b1:40:77
+2025-09-20 08:34:00: Device not found: nvr.local (NVR Camera System) - MAC: ec:71:db:bd:12:08
+2025-09-20 08:34:06: Device not found: homeassistant.local (Home Assistant) - MAC: 2c:cf:67:b1:40:77
+2025-09-20 08:35:12: Device not found: nvr.local (NVR Camera System) - MAC: ec:71:db:bd:12:08
+2025-09-20 08:35:18: Device not found: homeassistant.local (Home Assistant) - MAC: 2c:cf:67:b1:40:77

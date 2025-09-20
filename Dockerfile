@@ -7,8 +7,9 @@ RUN apt-get update && \
 
 # Copy configs and scripts
 COPY ./dnsmasq/dnsmasq.conf /etc/dnsmasq.conf
-COPY ./dnsmasq/update_nvr_ip.sh /etc/dnsmasq.d/update_nvr_ip.sh
-RUN chmod +x /etc/dnsmasq.d/update_nvr_ip.sh
+COPY ./dnsmasq/devices.conf /etc/dnsmasq.d/devices.conf
+COPY ./dnsmasq/update_device_ips.sh /etc/dnsmasq.d/update_device_ips.sh
+RUN chmod +x /etc/dnsmasq.d/update_device_ips.sh
 
 # Start dnsmasq and the update script
-CMD ["bash", "-c", "dnsmasq -k -C /etc/dnsmasq.conf & bash /etc/dnsmasq.d/update_nvr_ip.sh"]
+CMD ["bash", "-c", "dnsmasq -k -C /etc/dnsmasq.conf & bash /etc/dnsmasq.d/update_device_ips.sh"]

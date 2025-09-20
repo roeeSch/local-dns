@@ -20,7 +20,7 @@ discover_ip() {
     local retries=0
     
     while [ $retries -lt $MAX_RETRIES ]; do
-        local ip=$(arp-scan --localnet 2>/dev/null | grep -i "$mac" | awk '{print $1}')
+        local ip=$(sudo arp-scan --localnet 2>/dev/null | grep -i "$mac" | awk '{print $1}')
         if [ -n "$ip" ]; then
             echo "$ip"
             return 0
@@ -96,11 +96,16 @@ main() {
         local devices_updated=0
         
         # Read devices configuration
-        while IFS=':' read -r mac hostname description; do
+        while read -r line; do
             # Skip empty lines and comments
-            if [[ -z "$mac" || "$mac" =~ ^[[:space:]]*# ]]; then
+            if [[ -z "$line" || "$line" =~ ^[[:space:]]*# ]]; then
                 continue
             fi
+            
+            # Parse line: MAC:HOSTNAME:DESCRIPTION
+            local mac=$(echo "$line" | cut -d: -f1-6)  # MAC address (first 6 parts)
+            local hostname=$(echo "$line" | cut -d: -f7)  # Hostname (7th part)
+            local description=$(echo "$line" | cut -d: -f8-)  # Description (8th part onwards)
             
             devices_found=$((devices_found + 1))
             

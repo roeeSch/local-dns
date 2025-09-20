@@ -2,12 +2,13 @@ version: "3.9"
 
 services:
   local-dns:
-    image: local-dns          # pre-built image
+    build: .                  # build from Dockerfile
     container_name: local-dns
     restart: unless-stopped
     network_mode: "host"      # required to bind to the LAN interface
     volumes:
       - ./dnsmasq/log:/var/log
+      - ./dnsmasq/devices.conf:/etc/dnsmasq.d/devices.conf:ro
     tty: true
 
 # version: "3.9"
