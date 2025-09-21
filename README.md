@@ -191,7 +191,7 @@ local-dns/
     ├── update_device_ips.sh     # Main update script
     ├── status.sh                # Status checking script
     ├── monitor.sh               # Real-time monitoring script
-    ├── update_nvr_ip.sh         # Legacy single-device script
+   # update_nvr_ip.sh         # (removed: legacy single-device script)
     └── log/                     # Log files directory
         ├── update_device_ips.log
         └── dnsmasq.log
