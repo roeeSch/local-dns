@@ -1,0 +1,14 @@
+# /local_dns_addon/config.yaml
+name: "Local DNS Service"
+version: "1.0.0"
+slug: "local_dns"
+description: "A local DNS server that maps MAC addresses to hostnames."
+arch:
+  - "aarch64"
+startup: "application"
+boot: "auto"
+host_network: true
+map:
+  - "data:rw"
+options: {}
+schema: {}

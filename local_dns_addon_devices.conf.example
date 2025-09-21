@@ -1,0 +1,20 @@
+# This is an example configuration file for the Local DNS Service addon.
+#
+# 1. RENAME THIS FILE to `devices.conf`.
+# 2. PLACE IT in the addon's data directory.
+#    - The typical path is `/usr/share/hassio/addons/data/local_dns/devices.conf`
+#    - You can access this location using the VSCode or File Editor addon in Home Assistant.
+#
+# INSTRUCTIONS:
+# - Add one device per line.
+# - The format is: MAC_ADDRESS:HOSTNAME:DESCRIPTION
+# - The MAC address MUST be in lowercase.
+# - The hostname should not contain spaces. Using a local-style domain like `.home` or `.lan` is a good practice.
+# - The description is optional and is used for logging purposes.
+
+# --- START OF EXAMPLE DEVICES ---
+
+# Format: mac:address:hostname:description
+aa:bb:cc:dd:ee:ff:my-computer.local:My Desktop PC
+11:22:33:44:55:66:smart-tv.local:Living Room TV
+ec:71:db:bd:12:08:nvr.local:NVR Camera System
