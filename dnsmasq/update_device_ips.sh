@@ -9,9 +9,38 @@ LOGFILE="/var/log/update_device_ips.log"
 SLEEP_INTERVAL=60               # seconds between checks
 MAX_RETRIES=3                   # max retries for arp-scan
 
+# Network interface to scan on (auto-detected)
+SCAN_INTERFACE=""
+
 # Function to log messages with timestamp
 log_message() {
     echo "$(date '+%Y-%m-%d %H:%M:%S'): $1" >> "$LOGFILE"
+}
+
+# Detect LAN interface to use with arp-scan
+detect_interface() {
+    # Try dnsmasq.conf interface setting first
+    if [ -f /etc/dnsmasq.conf ]; then
+        local cfg_iface
+        cfg_iface=$(awk -F= '/^interface=/{print $2; exit}' /etc/dnsmasq.conf)
+        if [ -n "$cfg_iface" ]; then
+            SCAN_INTERFACE="$cfg_iface"
+            log_message "Using interface from dnsmasq.conf: $SCAN_INTERFACE"
+            return 0
+        fi
+    fi
+
+    # Fallback: infer default egress interface
+    local route_iface
+    route_iface=$(ip -4 route get 8.8.8.8 2>/dev/null | awk '{for(i=1;i<=NF;i++) if($i=="dev") {print $(i+1); exit}}')
+    if [ -n "$route_iface" ]; then
+        SCAN_INTERFACE="$route_iface"
+        log_message "Using interface from default route: $SCAN_INTERFACE"
+        return 0
+    fi
+
+    log_message "WARNING: Could not detect network interface for arp-scan"
+    return 1
 }
 
 # Function to discover IP for a MAC address
@@ -20,7 +49,12 @@ discover_ip() {
     local retries=0
     
     while [ $retries -lt $MAX_RETRIES ]; do
-        local ip=$(sudo arp-scan --localnet 2>/dev/null | grep -i "$mac" | awk '{print $1}')
+        local ip
+        if [ -n "$SCAN_INTERFACE" ]; then
+            ip=$(arp-scan --interface="$SCAN_INTERFACE" --localnet 2>/dev/null | grep -i "$mac" | awk '{print $1}')
+        else
+            ip=$(arp-scan --localnet 2>/dev/null | grep -i "$mac" | awk '{print $1}')
+        fi
         if [ -n "$ip" ]; then
             echo "$ip"
             return 0
@@ -35,7 +69,8 @@ discover_ip() {
 # Function to get current IP from dnsmasq config
 get_current_ip() {
     local hostname="$1"
-    local conf_file="$DNSMASQ_CONF_DIR/${hostname%%.*}.conf"
+    mkdir -p "$DNSMASQ_CONF_DIR/generated"
+    local conf_file="$DNSMASQ_CONF_DIR/generated/${hostname%%.*}.conf"
     
     if [ -f "$conf_file" ]; then
         grep "$hostname" "$conf_file" 2>/dev/null | awk -F/ '{print $3}'
@@ -50,10 +85,17 @@ update_device_config() {
     local new_ip="$4"
     
     local conf_file="$DNSMASQ_CONF_DIR/${hostname%%.*}.conf"
+    local generated_dir="$DNSMASQ_CONF_DIR/generated"
+    local generated_conf_file="$generated_dir/${hostname%%.*}.conf"
     local current_ip=$(get_current_ip "$hostname")
     
+    # Ensure generated directory exists for host sync bind-mount
+    mkdir -p "$generated_dir"
+
     if [ "$current_ip" != "$new_ip" ]; then
-        echo "address=/$hostname/$new_ip" > "$conf_file"
+        local line="address=/$hostname/$new_ip"
+        echo "$line" > "$conf_file"
+        echo "$line" > "$generated_conf_file"
         log_message "Updated $hostname ($description) -> $new_ip (was: ${current_ip:-'not found'})"
         return 0
     fi
@@ -77,6 +119,7 @@ reload_dnsmasq() {
 # Main function
 main() {
     log_message "Starting multi-device IP auto-update loop"
+    detect_interface || true
     
     # Check if devices.conf exists
     if [ ! -f "$DEVICES_CONF" ]; then
@@ -113,7 +156,7 @@ main() {
             local current_ip=$(discover_ip "$mac")
             
             if [ -z "$current_ip" ]; then
-                log_message "Device not found: $hostname ($description) - MAC: $mac"
+                log_message "Device not found on ${SCAN_INTERFACE:-auto}: $hostname ($description) - MAC: $mac"
             else
                 # Update configuration if IP changed
                 if update_device_config "$mac" "$hostname" "$description" "$current_ip"; then

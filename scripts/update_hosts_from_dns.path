@@ -1,0 +1,12 @@
+[Unit]
+Description=Watch dnsmasq generated configs and update /etc/hosts
+
+[Path]
+PathChanged=/home/roee/docker/local-dns/dnsmasq/generated
+PathModified=/home/roee/docker/local-dns/dnsmasq/generated
+Unit=update_hosts_from_dns.service
+
+[Install]
+WantedBy=multi-user.target
+
+

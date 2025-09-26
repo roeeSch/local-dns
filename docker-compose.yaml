@@ -1,5 +1,3 @@
-version: "3.9"
-
 services:
   local-dns:
     build: .                  # build from Dockerfile
@@ -11,4 +9,20 @@ services:
       - ./dnsmasq/dnsmasq.conf:/etc/dnsmasq.conf:ro
       - ./dnsmasq/devices.conf:/etc/dnsmasq.d/devices.conf:ro
       - ./dnsmasq/update_device_ips.sh:/etc/dnsmasq.d/update_device_ips.sh:ro
+      - ./dnsmasq/generated:/etc/dnsmasq.d/generated
     tty: true
+
+  heartbeat:
+    build: ./heartbeat
+    container_name: heartbeat
+    restart: unless-stopped
+    network_mode: host
+    env_file:
+      - ./heartbeat/.env
+    volumes:
+      - ./dnsmasq/generated:/shared/dns-configs:ro
+      - ./heartbeat/heartbeat.py:/app/heartbeat.py:ro
+    depends_on:
+      - local-dns
+
+

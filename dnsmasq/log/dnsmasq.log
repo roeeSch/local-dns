@@ -81,3 +81,94 @@ Sep 21 09:09:40 dnsmasq[7]: compile time options: IPv6 GNU-getopt DBus no-UBus i
 Sep 21 09:09:40 dnsmasq[7]: using nameserver 8.8.8.8#53
 Sep 21 09:09:40 dnsmasq[7]: using nameserver 8.8.4.4#53
 Sep 21 09:09:40 dnsmasq[7]: read /etc/hosts - 9 names
+Sep 21 15:23:43 dnsmasq[7]: started, version 2.90 cachesize 150
+Sep 21 15:23:43 dnsmasq[7]: compile time options: IPv6 GNU-getopt DBus no-UBus i18n IDN2 DHCP DHCPv6 no-Lua TFTP conntrack ipset nftset auth cryptohash DNSSEC loop-detect inotify dumpfile
+Sep 21 15:23:43 dnsmasq[7]: using nameserver 8.8.8.8#53
+Sep 21 15:23:43 dnsmasq[7]: using nameserver 8.8.4.4#53
+Sep 21 15:23:43 dnsmasq[7]: read /etc/hosts - 9 names
+Sep 26 09:26:59 dnsmasq[7]: started, version 2.90 cachesize 150
+Sep 26 09:26:59 dnsmasq[7]: compile time options: IPv6 GNU-getopt DBus no-UBus i18n IDN2 DHCP DHCPv6 no-Lua TFTP conntrack ipset nftset auth cryptohash DNSSEC loop-detect inotify dumpfile
+Sep 26 09:26:59 dnsmasq[7]: using nameserver 8.8.8.8#53
+Sep 26 09:26:59 dnsmasq[7]: using nameserver 8.8.4.4#53
+Sep 26 09:26:59 dnsmasq[7]: read /etc/hosts - 9 names
+Sep 26 09:35:54 dnsmasq[7]: started, version 2.90 cachesize 150
+Sep 26 09:35:54 dnsmasq[7]: compile time options: IPv6 GNU-getopt DBus no-UBus i18n IDN2 DHCP DHCPv6 no-Lua TFTP conntrack ipset nftset auth cryptohash DNSSEC loop-detect inotify dumpfile
+Sep 26 09:35:54 dnsmasq[7]: using nameserver 8.8.8.8#53
+Sep 26 09:35:54 dnsmasq[7]: using nameserver 8.8.4.4#53
+Sep 26 09:35:54 dnsmasq[7]: read /etc/hosts - 9 names
+Sep 26 09:40:28 dnsmasq[7]: started, version 2.90 cachesize 150
+Sep 26 09:40:28 dnsmasq[7]: compile time options: IPv6 GNU-getopt DBus no-UBus i18n IDN2 DHCP DHCPv6 no-Lua TFTP conntrack ipset nftset auth cryptohash DNSSEC loop-detect inotify dumpfile
+Sep 26 09:40:28 dnsmasq[7]: using nameserver 8.8.8.8#53
+Sep 26 09:40:28 dnsmasq[7]: using nameserver 8.8.4.4#53
+Sep 26 09:40:28 dnsmasq[7]: read /etc/hosts - 9 names
+Sep 26 09:41:35 dnsmasq[7]: started, version 2.90 cachesize 150
+Sep 26 09:41:35 dnsmasq[7]: compile time options: IPv6 GNU-getopt DBus no-UBus i18n IDN2 DHCP DHCPv6 no-Lua TFTP conntrack ipset nftset auth cryptohash DNSSEC loop-detect inotify dumpfile
+Sep 26 09:41:35 dnsmasq[7]: using nameserver 8.8.8.8#53
+Sep 26 09:41:35 dnsmasq[7]: using nameserver 8.8.4.4#53
+Sep 26 09:41:35 dnsmasq[7]: read /etc/hosts - 9 names
+Sep 26 09:43:27 dnsmasq[7]: started, version 2.90 cachesize 150
+Sep 26 09:43:27 dnsmasq[7]: compile time options: IPv6 GNU-getopt DBus no-UBus i18n IDN2 DHCP DHCPv6 no-Lua TFTP conntrack ipset nftset auth cryptohash DNSSEC loop-detect inotify dumpfile
+Sep 26 09:43:27 dnsmasq[7]: using nameserver 8.8.8.8#53
+Sep 26 09:43:27 dnsmasq[7]: using nameserver 8.8.4.4#53
+Sep 26 09:43:27 dnsmasq[7]: read /etc/hosts - 9 names
+Sep 26 09:48:04 dnsmasq[7]: started, version 2.90 cachesize 150
+Sep 26 09:48:04 dnsmasq[7]: compile time options: IPv6 GNU-getopt DBus no-UBus i18n IDN2 DHCP DHCPv6 no-Lua TFTP conntrack ipset nftset auth cryptohash DNSSEC loop-detect inotify dumpfile
+Sep 26 09:48:04 dnsmasq[7]: using nameserver 8.8.8.8#53
+Sep 26 09:48:04 dnsmasq[7]: using nameserver 8.8.4.4#53
+Sep 26 09:48:04 dnsmasq[7]: read /etc/hosts - 9 names
+Sep 26 09:48:26 dnsmasq[7]: started, version 2.90 cachesize 150
+Sep 26 09:48:26 dnsmasq[7]: compile time options: IPv6 GNU-getopt DBus no-UBus i18n IDN2 DHCP DHCPv6 no-Lua TFTP conntrack ipset nftset auth cryptohash DNSSEC loop-detect inotify dumpfile
+Sep 26 09:48:26 dnsmasq[7]: using nameserver 8.8.8.8#53
+Sep 26 09:48:26 dnsmasq[7]: using nameserver 8.8.4.4#53
+Sep 26 09:48:26 dnsmasq[7]: read /etc/hosts - 9 names
+Sep 26 13:19:52 dnsmasq[7]: started, version 2.90 cachesize 150
+Sep 26 13:19:52 dnsmasq[7]: compile time options: IPv6 GNU-getopt DBus no-UBus i18n IDN2 DHCP DHCPv6 no-Lua TFTP conntrack ipset nftset auth cryptohash DNSSEC loop-detect inotify dumpfile
+Sep 26 13:19:52 dnsmasq[7]: using nameserver 8.8.8.8#53
+Sep 26 13:19:52 dnsmasq[7]: using nameserver 8.8.4.4#53
+Sep 26 13:19:52 dnsmasq[7]: read /etc/hosts - 8 names
+Sep 26 13:52:12 dnsmasq[7]: started, version 2.90 cachesize 150
+Sep 26 13:52:12 dnsmasq[7]: compile time options: IPv6 GNU-getopt DBus no-UBus i18n IDN2 DHCP DHCPv6 no-Lua TFTP conntrack ipset nftset auth cryptohash DNSSEC loop-detect inotify dumpfile
+Sep 26 13:52:12 dnsmasq[7]: using nameserver 8.8.8.8#53
+Sep 26 13:52:12 dnsmasq[7]: using nameserver 8.8.4.4#53
+Sep 26 13:52:12 dnsmasq[7]: read /etc/hosts - 8 names
+Sep 26 13:53:56 dnsmasq[7]: started, version 2.90 cachesize 150
+Sep 26 13:53:56 dnsmasq[7]: compile time options: IPv6 GNU-getopt DBus no-UBus i18n IDN2 DHCP DHCPv6 no-Lua TFTP conntrack ipset nftset auth cryptohash DNSSEC loop-detect inotify dumpfile
+Sep 26 13:53:56 dnsmasq[7]: using nameserver 8.8.8.8#53
+Sep 26 13:53:56 dnsmasq[7]: using nameserver 8.8.4.4#53
+Sep 26 13:53:56 dnsmasq[7]: read /etc/hosts - 8 names
+Sep 26 13:56:29 dnsmasq[7]: started, version 2.90 cachesize 150
+Sep 26 13:56:29 dnsmasq[7]: compile time options: IPv6 GNU-getopt DBus no-UBus i18n IDN2 DHCP DHCPv6 no-Lua TFTP conntrack ipset nftset auth cryptohash DNSSEC loop-detect inotify dumpfile
+Sep 26 13:56:29 dnsmasq[7]: using nameserver 8.8.8.8#53
+Sep 26 13:56:29 dnsmasq[7]: using nameserver 8.8.4.4#53
+Sep 26 13:56:29 dnsmasq[7]: read /etc/hosts - 8 names
+Sep 26 13:56:33 dnsmasq[7]: read /etc/hosts - 8 names
+Sep 26 13:57:37 dnsmasq[7]: read /etc/hosts - 8 names
+Sep 26 13:58:41 dnsmasq[7]: read /etc/hosts - 8 names
+Sep 26 13:58:50 dnsmasq[7]: started, version 2.90 cachesize 150
+Sep 26 13:58:50 dnsmasq[7]: compile time options: IPv6 GNU-getopt DBus no-UBus i18n IDN2 DHCP DHCPv6 no-Lua TFTP conntrack ipset nftset auth cryptohash DNSSEC loop-detect inotify dumpfile
+Sep 26 13:58:50 dnsmasq[7]: using nameserver 8.8.8.8#53
+Sep 26 13:58:50 dnsmasq[7]: using nameserver 8.8.4.4#53
+Sep 26 13:58:50 dnsmasq[7]: read /etc/hosts - 8 names
+Sep 26 13:58:54 dnsmasq[7]: read /etc/hosts - 8 names
+Sep 26 13:59:58 dnsmasq[7]: read /etc/hosts - 8 names
+Sep 26 14:01:02 dnsmasq[7]: read /etc/hosts - 8 names
+Sep 26 14:02:06 dnsmasq[7]: read /etc/hosts - 8 names
+Sep 26 14:03:10 dnsmasq[7]: read /etc/hosts - 8 names
+Sep 26 14:04:14 dnsmasq[7]: read /etc/hosts - 8 names
+Sep 26 14:05:18 dnsmasq[7]: read /etc/hosts - 8 names
+Sep 26 14:05:30 dnsmasq[7]: started, version 2.90 cachesize 150
+Sep 26 14:05:30 dnsmasq[7]: compile time options: IPv6 GNU-getopt DBus no-UBus i18n IDN2 DHCP DHCPv6 no-Lua TFTP conntrack ipset nftset auth cryptohash DNSSEC loop-detect inotify dumpfile
+Sep 26 14:05:30 dnsmasq[7]: using nameserver 8.8.8.8#53
+Sep 26 14:05:30 dnsmasq[7]: using nameserver 8.8.4.4#53
+Sep 26 14:05:30 dnsmasq[7]: read /etc/hosts - 9 names
+Sep 26 14:05:34 dnsmasq[7]: read /etc/hosts - 9 names
+Sep 26 14:16:18 dnsmasq[7]: started, version 2.90 cachesize 150
+Sep 26 14:16:18 dnsmasq[7]: compile time options: IPv6 GNU-getopt DBus no-UBus i18n IDN2 DHCP DHCPv6 no-Lua TFTP conntrack ipset nftset auth cryptohash DNSSEC loop-detect inotify dumpfile
+Sep 26 14:16:18 dnsmasq[7]: using nameserver 8.8.8.8#53
+Sep 26 14:16:18 dnsmasq[7]: using nameserver 8.8.4.4#53
+Sep 26 14:16:18 dnsmasq[7]: read /etc/hosts - 10 names
+Sep 26 14:26:06 dnsmasq[7]: started, version 2.90 cachesize 150
+Sep 26 14:26:06 dnsmasq[7]: compile time options: IPv6 GNU-getopt DBus no-UBus i18n IDN2 DHCP DHCPv6 no-Lua TFTP conntrack ipset nftset auth cryptohash DNSSEC loop-detect inotify dumpfile
+Sep 26 14:26:06 dnsmasq[7]: using nameserver 8.8.8.8#53
+Sep 26 14:26:06 dnsmasq[7]: using nameserver 8.8.4.4#53
+Sep 26 14:26:06 dnsmasq[7]: read /etc/hosts - 10 names

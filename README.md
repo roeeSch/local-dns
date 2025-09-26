@@ -197,6 +197,54 @@ local-dns/
         └── dnsmasq.log
 ```
 
+## How it works end-to-end (no router changes)
+
+- dnsmasq container discovers device IPs with `arp-scan` and writes per-host files:
+  - Active files used by dnsmasq: `/etc/dnsmasq.d/<host>.conf`
+  - Mirrored files for the host/other containers: `/etc/dnsmasq.d/generated/<host>.conf` (bind-mounted to `./dnsmasq/generated`)
+- A host-side systemd path unit watches `./dnsmasq/generated` and updates a managed block in `/etc/hosts` via `scripts/update_hosts_from_dns.sh`.
+- Linux host and other containers normally resolve via Docker’s DNS (127.0.0.11) → host resolver (systemd‑resolved at 127.0.0.53). Because `/etc/hosts` is always current, `nvr.local` (etc.) resolves without running a DNS on port 53 or editing router DHCP.
+- The separate heartbeat container reads `./dnsmasq/generated/*.conf` directly, resolving hostnames even if the system resolver can’t query dnsmasq (since it listens on 5354).
+
+Implications:
+- The host will keep resolving even if the dnsmasq container is briefly down (last written IP remains in `/etc/hosts`).
+- Containers like Frigate also benefit because Docker forwards DNS to the host resolver which consults `/etc/hosts`.
+
+## Host sync setup
+
+Install once (already included in this repo):
+```bash
+sudo chmod +x ./scripts/update_hosts_from_dns.sh
+sudo cp ./scripts/update_hosts_from_dns.service /etc/systemd/system/
+sudo cp ./scripts/update_hosts_from_dns.path /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl enable --now update_hosts_from_dns.path
+sudo ./scripts/update_hosts_from_dns.sh
+```
+This creates/maintains a managed block in `/etc/hosts` bounded by:
+```
+# BEGIN local-dns managed
+# END local-dns managed
+```
+
+## Heartbeat container
+
+- Configure `../hearbeat/.env`:
+```
+MQTT_BROKER=homeassistant.local
+MQTT_USERNAME=your_user
+MQTT_PASSWORD=your_pass
+MQTT_TOPIC=minipc/heartbeat
+HEARTBEAT_INTERVAL=60
+```
+- It resolves `MQTT_BROKER` first from `/shared/dns-configs/*.conf` (the bind of `./dnsmasq/generated`), then falls back to normal DNS.
+
+## Notes and tips
+
+- dnsmasq uses port 5354 to avoid clashing with `systemd-resolved`; system resolvers won’t query 5354. That’s why we mirror mappings and update `/etc/hosts`.
+- Ensure `dnsmasq.conf` `interface=` matches your LAN NIC (e.g., `enp3s0`) so `arp-scan` finds devices.
+- To add devices, edit `dnsmasq/devices.conf` and `docker-compose restart local-dns`.
+
 ## Security Considerations
 
 - **Network Access**: The service binds to all interfaces by default

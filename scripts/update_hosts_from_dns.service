@@ -1,0 +1,14 @@
+[Unit]
+Description=Update /etc/hosts from dnsmasq generated configs
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/env bash /home/roee/docker/local-dns/scripts/update_hosts_from_dns.sh
+RemainAfterExit=no
+
+[Install]
+WantedBy=multi-user.target
+
+
