@@ -274,6 +274,43 @@ arp-scan --interface=enp3s0 --localnet
 # Scan multiple subnets
 arp-scan 192.168.1.0/24 192.168.2.0/24
 ```
+## Log Management (Automatic Log Rotation)
+
+To prevent log files from growing indefinitely, this project includes a sample logrotate configuration (`logrotate.conf`). This will automatically rotate, compress, and clean up old log files in `dnsmasq/log/`.
+
+### Setup
+
+1. Ensure `logrotate` is installed on your system (most Linux distributions include it by default).
+2. Use the provided `logrotate.conf` in the project root. It will:
+   - Rotate any `.log` file in `dnsmasq/log/` when it reaches 10MB
+   - Keep 7 compressed backups
+   - Truncate logs in place (safe for running services)
+
+### Example logrotate.conf
+
+```conf
+/home/roee/docker/local-dns/dnsmasq/log/*.log {
+   size 10M
+   rotate 7
+   compress
+   missingok
+   notifempty
+   copytruncate
+   create 0644 root root
+}
+```
+
+### Automating with cron
+
+To run logrotate daily, add this line to your crontab (edit with `crontab -e`):
+
+```
+0 0 * * * /usr/sbin/logrotate -s /home/roee/docker/local-dns/logrotate.status /home/roee/docker/local-dns/logrotate.conf
+```
+
+This will check and rotate logs every night at midnight. The `-s` option stores logrotate's state so it knows when to rotate.
+
+You can adjust the schedule or logrotate options as needed for your environment.
 
 ## Contributing
 
