@@ -5,10 +5,10 @@ services:
     restart: unless-stopped
     network_mode: "host"      # required to bind to the LAN interface
     volumes:
-      - ./dnsmasq/log:/var/log
+      - ./logs:/var/log
       - ./dnsmasq/dnsmasq.conf:/etc/dnsmasq.conf:ro
       - ./dnsmasq/devices.conf:/etc/dnsmasq.d/devices.conf:ro
-      - ./dnsmasq/update_device_ips.sh:/etc/dnsmasq.d/update_device_ips.sh:ro
+      - ./scripts/container/update_device_ips.sh:/etc/dnsmasq.d/update_device_ips.sh:ro
       - ./dnsmasq/generated:/etc/dnsmasq.d/generated
     tty: true
 

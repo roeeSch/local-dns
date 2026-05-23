@@ -4,8 +4,9 @@
 # Shows live updates of device status and IP changes
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-DEVICES_CONF="$SCRIPT_DIR/devices.conf"
-LOG_FILE="$SCRIPT_DIR/log/update_device_ips.log"
+PROJECT_ROOT="$(dirname "$(dirname "$SCRIPT_DIR")")"
+DEVICES_CONF="$PROJECT_ROOT/dnsmasq/devices.conf"
+LOG_FILE="$PROJECT_ROOT/logs/update_device_ips.log"
 
 # Colors for output
 RED='\033[0;31m'
@@ -81,7 +82,7 @@ show_recent_logs() {
 show_dns_queries() {
     echo -e "${YELLOW}=== Recent DNS Queries ===${NC}"
     
-    local dns_log="$SCRIPT_DIR/log/dnsmasq.log"
+    local dns_log="$PROJECT_ROOT/logs/dnsmasq.log"
     if [ -f "$dns_log" ]; then
         tail -5 "$dns_log" | grep -E "(query|reply)" | while read line; do
             echo "$line"

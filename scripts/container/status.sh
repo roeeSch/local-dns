@@ -13,9 +13,10 @@ if [ -f "/etc/dnsmasq.d/devices.conf" ]; then
 else
     # Running on host
     SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-    DEVICES_CONF="$SCRIPT_DIR/devices.conf"
-    DNSMASQ_CONF_DIR="$SCRIPT_DIR"
-    LOG_DIR="$SCRIPT_DIR/log"
+    PROJECT_ROOT="$(dirname "$(dirname "$SCRIPT_DIR")")"
+    DEVICES_CONF="$PROJECT_ROOT/dnsmasq/devices.conf"
+    DNSMASQ_CONF_DIR="$PROJECT_ROOT/dnsmasq"
+    LOG_DIR="$PROJECT_ROOT/logs"
 fi
 
 echo "=== Local DNS Service Status ==="
@@ -43,20 +44,20 @@ if [ -f "$DEVICES_CONF" ]; then
         fi
         
         # Parse line: MAC:HOSTNAME:DESCRIPTION
-        local mac=$(echo "$line" | cut -d: -f1-6)  # MAC address (first 6 parts)
-        local hostname=$(echo "$line" | cut -d: -f7)  # Hostname (7th part)
-        local description=$(echo "$line" | cut -d: -f8-)  # Description (8th part onwards)
+        mac=$(echo "$line" | cut -d: -f1-6)  # MAC address (first 6 parts)
+        hostname=$(echo "$line" | cut -d: -f7)  # Hostname (7th part)
+        description=$(echo "$line" | cut -d: -f8-)  # Description (8th part onwards)
         
         # Get current IP from dnsmasq config
-        local conf_file="$DNSMASQ_CONF_DIR/${hostname%%.*}.conf"
-        local current_ip="not found"
+        conf_file="$DNSMASQ_CONF_DIR/${hostname%%.*}.conf"
+        current_ip="not found"
         
         if [ -f "$conf_file" ]; then
             current_ip=$(grep "$hostname" "$conf_file" 2>/dev/null | awk -F/ '{print $3}')
         fi
         
         # Try to discover current IP via arp-scan
-        local discovered_ip=$(sudo arp-scan --localnet 2>/dev/null | grep -i "$mac" | awk '{print $1}')
+        discovered_ip=$(sudo arp-scan --localnet 2>/dev/null | grep -i "$mac" | awk '{print $1}')
         
         if [ -n "$discovered_ip" ]; then
             if [ "$current_ip" = "$discovered_ip" ]; then

@@ -26,12 +26,12 @@ A Docker-based DNS service that automatically maps MAC addresses to hostnames in
 
 3. **Check status**:
    ```bash
-   ./dnsmasq/status.sh
+   ./scripts/container/status.sh
    ```
 
 4. **Monitor in real-time**:
    ```bash
-   ./dnsmasq/monitor.sh
+   ./scripts/container/monitor.sh
    ```
 
 ## Configuration
@@ -90,17 +90,17 @@ ssh user@nas.home
 
 **Check Status**:
 ```bash
-./dnsmasq/status.sh
+./scripts/container/status.sh
 ```
 
 **Real-time Monitoring**:
 ```bash
-./dnsmasq/monitor.sh
+./scripts/container/monitor.sh
 ```
 
 **View Logs**:
 ```bash
-tail -f dnsmasq/log/update_device_ips.log
+tail -f logs/update_device_ips.log
 ```
 
 ## Network Configuration
@@ -147,7 +147,7 @@ sudo ufw allow 53/tcp
 
 3. **Check logs**:
    ```bash
-   tail -f dnsmasq/log/update_device_ips.log
+   tail -f logs/update_device_ips.log
    ```
 
 ### DNS Not Working
@@ -184,17 +184,23 @@ local-dns/
 ├── docker-compose.yaml          # Docker Compose configuration
 ├── Dockerfile                   # Docker image definition
 ├── README.md                    # This file
+├── logs/                        # Log files directory
+│   ├── update_device_ips.log
+│   └── dnsmasq.log
+├── scripts/
+│   ├── container/
+│   │   ├── update_device_ips.sh # Main update script
+│   │   ├── status.sh            # Status checking script
+│   │   └── monitor.sh           # Real-time monitoring script
+│   └── host/
+│       ├── update_hosts_from_dns.sh   # Host sync script
+│       ├── update_hosts_from_dns.service
+│       └── update_hosts_from_dns.path
 └── dnsmasq/
     ├── dnsmasq.conf             # Main dnsmasq configuration
     ├── devices.conf             # Device MAC-to-hostname mapping
     ├── example-devices.conf     # Example device configuration
-    ├── update_device_ips.sh     # Main update script
-    ├── status.sh                # Status checking script
-    ├── monitor.sh               # Real-time monitoring script
-   # update_nvr_ip.sh         # (removed: legacy single-device script)
-    └── log/                     # Log files directory
-        ├── update_device_ips.log
-        └── dnsmasq.log
+    └── generated/               # Generated configuration files
 ```
 
 ## How it works end-to-end (no router changes)
@@ -289,7 +295,7 @@ To prevent log files from growing indefinitely, this project includes a sample l
 ### Example logrotate.conf
 
 ```conf
-/home/roee/docker/local-dns/dnsmasq/log/*.log {
+/home/roee/docker/local-dns/logs/*.log {
    size 10M
    rotate 7
    compress

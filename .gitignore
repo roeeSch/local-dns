@@ -1,8 +1,8 @@
 .DS_Store
 # Ignore log files and logrotate backups
-dnsmasq/log/*.log
-dnsmasq/log/*.log.*
-dnsmasq/log/*.gz
+logs/*.log
+logs/*.log.*
+logs/*.gz
 logrotate.status
 .env
 dnsmasq/generated/*.conf
