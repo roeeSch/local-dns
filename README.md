@@ -11,6 +11,23 @@ A Docker-based DNS service that automatically maps MAC addresses to hostnames in
 - **Docker-based**: Easy deployment and management
 - **No Router Configuration**: Works without modifying router settings
 
+## Architecture
+
+```mermaid
+graph TD
+    A[arp scan] -->|Discovers MACs| B[update device ips script]
+    B -->|Writes| C[dnsmasq generated configs]
+    C -->|Read by| D[dnsmasq port 5354]
+    C -->|Bind Mount| E[Host system]
+    E -->|systemd path unit watches| F[update hosts from dns script]
+    F -->|Updates| G[etc hosts file]
+    C -->|Read by| H[Heartbeat Container]
+    H -->|Publishes alive state to| I[MQTT Broker]
+```
+
+### Heartbeat Integration
+The `heartbeat` container directly reads the generated configurations to resolve its MQTT broker locally. This guarantees that it can publish its "alive" state to your Home Assistant or MQTT broker even if the external network goes down.
+
 ## Quick Start
 
 1. **Configure your devices** in `dnsmasq/devices.conf`:
