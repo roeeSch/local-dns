@@ -5,7 +5,7 @@ Wants=network-online.target
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/env bash /home/roee/docker/local-dns/scripts/update_hosts_from_dns.sh
+ExecStart=/usr/bin/env bash /home/roee/docker/local-dns/scripts/host/update_hosts_from_dns.sh
 RemainAfterExit=no
 
 [Install]
